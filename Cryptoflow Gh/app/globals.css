@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 248 250 252;
+    --foreground: 210 40% 2%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 40% 2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 40% 2%;
+    --primary: 210 100% 15%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 162 100% 39%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 162 100% 39%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 210 100% 15%;
+    --chart-1: 162 100% 39%;
+    --chart-2: 210 100% 15%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 14%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 14%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 162 100% 39%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 210 100% 25%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 162 100% 39%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 162 100% 39%;
+    --chart-1: 162 100% 39%;
+    --chart-2: 210 100% 25%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-medium;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.6;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glass morphism effects */
+  .glass-card {
+    @apply backdrop-blur-md bg-white/10 dark:bg-black/10 border border-white/20 rounded-2xl shadow-glass;
+  }
+  
+  .glass-button {
+    @apply backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 hover:bg-white/30 transition-all duration-300;
+  }
+
+  /* Enhanced crypto components */
+  .crypto-gradient {
+    @apply bg-gradient-to-br from-crypto-navy via-crypto-green to-crypto-navy;
+  }
+  
+  .green-gradient {
+    @apply bg-gradient-to-br from-crypto-green via-emerald-400 to-crypto-green;
+  }
+  
+  .gold-gradient {
+    @apply bg-gradient-to-br from-crypto-gold to-yellow-500;
+  }
+  
+  .crypto-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl shadow-crypto hover:shadow-crypto-hover transition-all duration-500 hover:scale-[1.02] hover:border-crypto-green/30;
+  }
+  
+  .crypto-card-premium {
+    @apply crypto-card bg-gradient-to-br from-crypto-green/5 via-transparent to-crypto-navy/5 border-crypto-green/20;
+  }
+  
+  .crypto-button {
+    @apply bg-gradient-to-r from-crypto-green to-emerald-500 hover:from-crypto-green/90 hover:to-emerald-500/90 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-crypto shadow-lg;
+  }
+  
+  .crypto-button-premium {
+    @apply bg-gradient-to-r from-crypto-gold to-yellow-500 hover:from-crypto-gold/90 hover:to-yellow-500/90 text-black font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg;
+  }
+  
+  .crypto-button-outline {
+    @apply border-2 border-crypto-green bg-transparent hover:bg-crypto-green text-crypto-green hover:text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg;
+  }
+
+  /* Navigation components */
+  .nav-link {
+    @apply text-muted-foreground hover:text-crypto-green transition-all duration-300 font-medium relative;
+  }
+  
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-crypto-green transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Dashboard components */
+  .dashboard-tile {
+    @apply crypto-card p-6 cursor-pointer hover:bg-gradient-to-br hover:from-crypto-green/10 hover:to-transparent;
+  }
+  
+  .dashboard-tile-icon {
+    @apply w-14 h-14 rounded-2xl flex items-center justify-center text-white transition-transform duration-300;
+  }
+
+  /* Form components */
+  .form-input {
+    @apply bg-background/50 border-2 border-border focus:border-crypto-green rounded-xl px-4 py-3 transition-all duration-300 focus:shadow-crypto/20;
+  }
+  
+  .form-select {
+    @apply form-input cursor-pointer;
+  }
+
+  /* Stats components */
+  .stats-card {
+    @apply text-center p-6 rounded-2xl bg-gradient-to-br from-white/80 to-white/40 dark:from-gray-800/80 dark:to-gray-800/40 backdrop-blur-sm border border-white/20 hover:scale-105 transition-all duration-300;
+  }
+
+  /* Animation utilities */
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-8 transition-all duration-700;
+  }
+  
+  .animate-on-scroll.in-view {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Trading components */
+  .trading-chart {
+    @apply bg-gradient-to-br from-crypto-navy/5 to-crypto-green/5 rounded-2xl p-6 border border-crypto-green/20;
+  }
+  
+  .price-up {
+    @apply text-emerald-500 font-bold;
+  }
+  
+  .price-down {
+    @apply text-red-500 font-bold;
+  }
+  
+  .price-neutral {
+    @apply text-muted-foreground;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .crypto-button {
+      @apply px-6 py-3 text-sm;
+    }
+    
+    .crypto-card {
+      @apply hover:scale-100;
+    }
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/20;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-crypto-green/50 rounded-lg;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-crypto-green/70;
+}
+
+/* Loading animations */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.dark .loading-shimmer {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
+}
+
+/* Custom selection */
+::selection {
+  @apply bg-crypto-green/20 text-crypto-navy;
+}
+
+/* Hide Next.js badge and error messages */
+body > nextjs-portal {
+  display: none;
+}
+
+/* Premium effects */
+.premium-glow {
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.crypto-glow {
+  box-shadow: 0 0 30px rgba(0, 200, 151, 0.3);
+}
+
+/* Floating elements */
+.floating-element {
+  @apply animate-float;
+}
+
+.floating-element:nth-child(2n) {
+  animation-delay: -1s;
+}
+
+.floating-element:nth-child(3n) {
+  animation-delay: -2s;
+}
